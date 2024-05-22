@@ -1,4 +1,4 @@
-local url = "https://github.com/DonealPique/chest-monitor/blob/main/chest_monitor.lua"
+local url = "https://raw.githubusercontent.com/DonealPique/chest-monitor/main/chest_monitor.lua"
 
 print("Downloading chest monitor...")
 local response = http.get(url)
