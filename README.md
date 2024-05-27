@@ -7,7 +7,7 @@ This script displays the contents of a chest on a monitor in Minecraft with Comp
 1. Run the following command in your ComputerCraft terminal to install the script:
 
     ```sh
-    wget run https://raw.githubusercontent.com/<username>/<repository>/main/install.lua
+    wget run "https://raw.githubusercontent.com/DonealPique/chest-monitor/main/chest_monitor.lua"
     ```
 
 2. The computer will automatically reboot and the chest monitor will start on boot.
