@@ -1,35 +1,22 @@
-local url = "https://raw.githubusercontent.com/DonealPique/chest-monitor/main/chest_monitor.lua"
+local files = {
+    "elavator.lua",
+    "keycardsys.lua",
+    "levercontroller.lua",
+    "mob_grinder.lua",
+    "RaphaelOS.lua",
+    "TextOnMonitor.lua"
+}
 
-print("Downloading chest_monitor.lua...")
-local response = http.get(url)
 
-if response then
-    local script = response.readAll()
-    response.close()
-    
-    local file = fs.open("/chest_monitor.lua", "w")
-    if file then
-        file.write(script)
-        file.close()
-        print("Downloaded and saved as chest_monitor.lua")
+local baseURL = "https://raw.githubusercontent.com/DonealPique/Experiment-V/main/scripts/install.lua"
+local worldURL = "https://drive.google.com/file/d/1QTTchrM8epDm188MYBwzM2LN87Z9Ez4p/view?usp=sharing"
 
-        local startupScript = [[
-shell.run("/chest_monitor.lua")
-]]
-        local startupFile = fs.open("/startup.lua", "w")
-        if startupFile then
-            startupFile.write(startupScript)
-            startupFile.close()
-            print("Created startup.lua to run chest_monitor.lua at startup")
-
-            print("Installation complete. Rebooting...")
-            os.reboot()
-        else
-            print("Error: Could not create startup.lua. Please check if the file system is writable.")
-        end
-    else
-        print("Error: Could not save chest_monitor.lua. Please check if the file system is writable.")
-    end
-else
-    print("Failed to download chest_monitor.lua. Check the URL and try again.")
+for _, file in ipairs(files) do
+    local url = baseURL .. file
+    shell.run("wget", url, file)
 end
+
+shell.run("wget", worldURL, "Experiment V.zip")
+
+print("All scripts and world have been downloaded.")
+print("Please restart the computer to apply changes. (Ctrl + R + Enter)")
